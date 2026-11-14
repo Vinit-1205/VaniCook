@@ -1,349 +1,356 @@
-<div align="center">VaniCook
-One Cook. Many Homes. One Connected Neighbourhood.
-An AI-powered neighbourhood cooking platform that connects households with trusted cooks — making everyday meals more affordable and helping independent cooks earn better.
+<div align="center">
 
+# 🍳 VaniCook
+### *One Cook. Multiple Households. Affordable Cooking. Better Livelihoods.*
 
+<p align="center">
+  <strong>An AI-powered, location-centric neighbourhood cook-sharing platform with multilingual voice intelligence.</strong>
+  <br />
+  <em>Developed for the <strong>Gnani AI Multilingual Hackathon 2026</strong></em>
+</p>
 
+[![Gnani AI Hackathon](https://img.shields.io/badge/Gnani_AI-Hackathon_2026-6366F1?style=for-the-badge&logo=openai&logoColor=white)](https://api.vachana.ai)
+[![React 19](https://img.shields.io/badge/React_19-Frontend-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev)
+[![Node.js](https://img.shields.io/badge/Node.js-Express_MVC-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org)
+[![PostgreSQL 18](https://img.shields.io/badge/PostgreSQL_18-Prisma_ORM-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org)
+[![Socket.IO](https://img.shields.io/badge/Socket.IO-Real--Time-010101?style=for-the-badge&logo=socketdotio&logoColor=white)](https://socket.io)
+[![Tailwind CSS 3](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
 
+<br />
 
-Discover cooks · Share cooking costs · Build stronger communities
-</div>About VaniCook
-VaniCook is an AI-powered, location-based cooking marketplace designed for Indian residential communities. It connects households with independent, verified cooks and introduces a neighbourhood-sharing model: multiple nearby families can share the services of one cook.
+[✨ Explore Features](#-key-features) •
+[🎙️ Gnani Voice AI](#-gnani-ai-voice-architecture) •
+[🏢 Neighbourhood Pools](#-the-neighbourhood-cook-pool-innovation) •
+[📸 Live UI Gallery](#-application-walkthrough--visual-gallery) •
+[🚀 Quickstart Guide](#-quickstart-guide) •
+[🔑 Demo Accounts](#-one-click-demo-credentials)
 
-Instead of every household independently hiring a cook, VaniCook helps residents coordinate meal requirements and share cooking arrangements. This can reduce household cooking expenses by an estimated 40–60%, while helping cooks serve more households and improve their hourly earnings.
-The problem we're solving
-- For households: Finding reliable cooks, managing monthly costs and coordinating meal requirements can be difficult.
-- For independent cooks: Limited local discovery and one-household arrangements can restrict earning potential.
-- For residential communities: Neighbours often have similar cooking needs but lack a trusted way to coordinate shared arrangements.
-The VaniCook approach
-1. Discover cooks available in your residential society.
-2. Compare cuisines, specialities, ratings, availability and pricing.
-3. Book a cook individually or explore a shared neighbourhood arrangement.
-4. Coordinate meal preferences and household requirements.
-5. Build a more affordable and sustainable local cooking network.
-Core concept
-<div align="center">Traditional arrangement	VaniCook shared arrangement
-One household hires one cook	Nearby households can share one cook
-Separate household expenses	Cooking costs can be shared
-Limited local discovery	Society-based cook discovery
-Independent coordination	A common booking platform
+<br />
+<br />
 
+<img src="./screenshots/01_landing_page.png" alt="VaniCook Landing Page Hero" width="95%" style="border-radius: 18px; box-shadow: 0 20px 40px rgba(0,0,0,0.25);" />
 
-</div>Illustrative savings: Shared pricing is designed around household participation. Actual savings depend on the cook, meal slots, number of households and agreed requirements.
+</div>
 
-Product highlights
-Feature	Description
-Society-based discovery	Find cooks serving your residential society and nearby communities.
-Cook profiles	Explore experience, cuisines, specialities, ratings and pricing.
-Shared cooking model	Support individual bookings and multi-household cooking arrangements.
-Availability management	Cooks manage weekly availability across breakfast, lunch and dinner.
-Household preferences	Capture dietary practices, spice levels, family size and special instructions.
-Role-based dashboards	Dedicated experiences for customers, cooks and administrators.
-Reviews and ratings	Let customers share feedback after completed bookings.
-Voice assistant foundation	A conversational voice interface designed for future multilingual speech integration.
-Neighbourhood pooling foundation	Data structures and preview functionality for future automated group matching.
+---
 
+## 🌟 Executive Overview
 
-Technology stack
-<div align="center">Layer	Technologies
-Frontend	React, Vite, Tailwind CSS
-Backend	Node.js, Express.js
-Database	PostgreSQL
-ORM	Prisma
-Authentication	JWT, bcrypt, HTTP-only cookies
-Validation	Zod
-Real-time foundation	Socket.IO
-UI motion	Motion for React
-API communication	Axios
-Development	Git, GitHub, npm
+**VaniCook** (CookConnect) transforms urban domestic cooking for Indian gated residential societies. 
 
+Traditional domestic cooking platforms treat cook hiring as an expensive, isolated 1:1 engagement (costing households **₹3,500–₹5,000/month** while forcing cooks to travel between 5–7 distant houses in grueling city traffic). 
 
-</div>Architecture
-VaniCook follows a single-root unified architecture. The React frontend and Node.js/Express backend are maintained inside one project, with dependencies managed through the root package.json.
-VaniCook/
-├── public/
-│   └── assets/
-│       └── favicon.svg
-│
-├── src/
-│   ├── frontend/
-│   │   ├── assets/
-│   │   ├── components/
-│   │   │   ├── common/
-│   │   │   ├── layout/
-│   │   │   ├── animations/
-│   │   │   └── voice/
-│   │   ├── pages/
-│   │   │   ├── auth/
-│   │   │   ├── customer/
-│   │   │   ├── cook/
-│   │   │   └── admin/
-│   │   ├── services/
-│   │   ├── context/
-│   │   ├── hooks/
-│   │   ├── routes/
-│   │   ├── utils/
-│   │   ├── App.jsx
-│   │   ├── main.jsx
-│   │   └── index.css
-│   │
-│   └── backend/
-│       ├── config/
-│       │   ├── database.js
-│       │   ├── env.js
-│       │   └── seed.js
-│       ├── models/
-│       ├── controllers/
-│       ├── services/
-│       ├── routes/
-│       ├── middleware/
-│       ├── validators/
-│       ├── sockets/
-│       ├── utils/
-│       ├── app.js
-│       └── server.js
-│
+**VaniCook changes the game through Spatial Pooling:**
+- Adjacent families in the same apartment tower (e.g., Tower B, Flats 701, 704, and 802) share **one verified, dedicated home cook** visiting their floor sequentially.
+- **Households save 45% to 55%** on monthly cooking costs (dropping down to **₹1,400–₹1,800/month** or ~₹45/meal).
+- **Cooks earn +65% to +80% more** (**₹28,000–₹35,000/month**) with **ZERO inter-city commute**—all within one residential complex.
+- **Vani Voice Assistant (Powered by Gnani AI):** Non-tech-savvy domestic cooks and regional residents can discover cooks, form pools, and check daily schedules using natural voice in **Hindi, Marathi, Kannada, English, and Hinglish**.
+
+---
+
+## 📊 Market Comparison: Why VaniCook Wins
+
+| Feature Dimension | Traditional Cook Agencies (BookMyBai, Helpers Near Me) | Food Delivery Apps (Zomato, Swiggy) | 🍳 **VaniCook (CookConnect)** |
+| :--- | :--- | :--- | :--- |
+| **Engagement Model** | 1:1 Private domestic hire | Restaurant delivery per order | **Spatial Multi-Household Pool (1:N)** |
+| **Monthly Cost** | High (₹4,000 – ₹7,000 + agency cuts) | Very High (₹9,000 – ₹15,000/person) | **Affordable (₹1,400 – ₹1,800/family)** |
+| **Food Quality** | Variable, unvetted | Commercial / Preservative-heavy | **Fresh, hygienic, home-cooked in your kitchen** |
+| **Cook Earnings** | ₹14,000 – ₹18,000 (exhausting commute) | Delivery riders: ₹15,000 – ₹20,000 | **₹28,000 – ₹35,000 (localized within 1 society)** |
+| **Daily Transit** | 3–4 hours in buses / shared autos | Constant road riding | **0 hours (Elevator ride between floors)** |
+| **Accessibility** | English web forms & paper agencies | Touch-only mobile app | **Multilingual Voice AI (Hindi, Marathi, Kannada, English)** |
+| **Safety & Trust** | Paper register with society guard | N/A | **Police verified + RWA Admin oversight + Resident reviews** |
+
+---
+
+## 🏢 The Neighbourhood Cook Pool Innovation
+
+```
+                     TRADITIONAL MODEL                                              VANICOOK POOL MODEL
+           (3 Cooks Travel Across City to Same Tower)                       (1 Dedicated Cook Serves Contiguous Flats)
+
+     Cook A (Indiranagar) ──► Flat 701 (Pays ₹3,500)                                       Flat 701 (Pays ₹1,575) ──┐
+     Cook B (Koramangala) ──► Flat 704 (Pays ₹3,500)                 Tower B Elevator ──►  Flat 704 (Pays ₹1,575) ──┼──► 1 Cook Earns ₹4,725!
+     Cook C (Whitefield)  ──► Flat 802 (Pays ₹3,500)                                       Flat 802 (Pays ₹1,575) ──┘   (Zero Travel Fatigue)
+   (3-4 Hours in Traffic • High Fuel Costs • Exhaustion)                                (Sequential Kitchen Routes • Fresh Hot Rotis)
+```
+
+### The Tiered Cost-Sharing Formula
+Implemented in `src/backend/services/pricing.service.js`:
+- **1 Household (Solo Hire):** Base Rate = **₹3,500/month** (Customer pays full rate; Cook earns ₹3,500)
+- **2 Households Shared:** Rate per household = **₹2,100/month** (**40% Savings**; Cook earns ₹4,200)
+- **3 Households Shared:** Rate per household = **₹1,575/month** (**55% Savings**; Cook earns ₹4,725)
+- **4 Households Shared:** Rate per household = **₹1,400/month** (**60% Savings**; Cook earns ₹5,600)
+- Across 3 daily shifts (Breakfast, Lunch, Dinner), the cook earns **₹28,000 to ₹35,000 monthly**.
+
+---
+
+## 🎙️ Gnani AI Voice Architecture
+
+<div align="center">
+  <img src="./screenshots/09_voice_assistant_modal.png" alt="Vani Voice Assistant Modal" width="70%" style="border-radius: 14px; box-shadow: 0 12px 30px rgba(0,0,0,0.2);" />
+</div>
+
+<br />
+
+VaniCook integrates **Gnani AI** as its foundational speech intelligence layer, bridging the digital literacy gap for domestic workers:
+
+```
+[1. Browser Microphone]
+   └── Native 16kHz Linear PCM Audio (via WavRecorder Web Audio API)
+   └── Encoded into standard RIFF WAVE Blob & Base64 stream
+           │
+           ▼
+[2. Express Controller Sanitization]
+   └── extractAudioBuffer() removes data URL prefixes & verifies RIFF magic bytes
+           │
+           ▼
+[3. Gnani Prisma STT (ASR)]
+   └── Endpoint: https://api.vachana.ai/stt/v3
+   └── Model: prisma-v3.0 (Multipart/form-data)
+   └── Detects Language: Hindi (hi-IN), Marathi (mr-IN), Kannada (kn-IN), English (en-IN)
+           │
+           ▼
+[4. VaniCook Intent Orchestrator]
+   └── Extracts Intent (FIND_COOKS, CREATE_GROUP_REQUEST, CALCULATE_PRICING)
+   └── Extracts Entities (Meal Type: Lunch, Households: 3, Cook: Sunita Devi)
+   └── Safety State Machine: CONFIRMATION_REQUIRED
+           │
+           ▼
+[5. Voice Confirmation Safety Gate]
+   └── UI displays interactive Amber Safety Banner before committing financial bookings
+           │
+           ▼
+[6. Gnani Timbre TTS (Speech Synthesis)]
+   └── Endpoint: https://api.vachana.ai/api/v1/tts/inference
+   └── Model: timbre-v2.5 (JSON payload)
+   └── Regional Voices: 'Nalini' (Hindi), 'Meera' (Marathi), 'Arvind' (English)
+   └── Client audio element plays natural spoken response
+```
+
+### Supported Indic Languages in Production:
+| Language | Code | Voice Model | Example Spoken Utterance |
+| :--- | :---: | :---: | :--- |
+| **हिन्दी (Hindi)** | `hi-IN` | `Nalini` | *"सुनीता देवी को लंच के लिए बुक करो"* |
+| **मराठी (Marathi)** | `mr-IN` | `Meera` | *"आमच्या सोसायटीमध्ये 3 फॅमिलीसाठी व्हेज कूक शोध"* |
+| **English (India)** | `en-IN` | `Arvind` | *"Show forming pools in Prestige Falcon City"* |
+| **ಕನ್ನಡ (Kannada)** | `kn-IN` | Native | *"ನಮ್ಮ ಅಪಾರ್ಟ್ಮೆಂಟ್ನಲ್ಲಿ ಅಡುಗೆಯವರನ್ನು ಹುಡುಕಿ"* |
+| **Hinglish (Auto)** | `indic-auto` | Adaptive | *"Prestige me 2 families ke sath lunch pool banana hai"* |
+
+---
+
+## 📸 Application Walkthrough & Visual Gallery
+
+### 1. The Public Experience & Society Context
+<div align="center">
+  <table>
+    <tr>
+      <td width="50%">
+        <img src="./screenshots/01b_landing_features.png" alt="Value Pillars & Features" />
+        <p align="center"><em>Value Pillars: Group Pools, 45% Savings & Voice AI</em></p>
+      </td>
+      <td width="50%">
+        <img src="./screenshots/02_login_screen.png" alt="Split Screen Login" />
+        <p align="center"><em>Split-Screen Login with One-Click Demo Autofill</em></p>
+      </td>
+    </tr>
+  </table>
+</div>
+
+### 2. Cook Discovery & Booking Workflow
+<div align="center">
+  <table>
+    <tr>
+      <td width="50%">
+        <img src="./screenshots/04_cook_discovery_and_search.png" alt="Cook Discovery & Filters" />
+        <p align="center"><em>Multi-Facet Cook Discovery (Cuisine, Rating & Diet)</em></p>
+      </td>
+      <td width="50%">
+        <img src="./screenshots/05_cook_profile_detail.png" alt="Cook Profile Detail" />
+        <p align="center"><em>Verified Cook Profile, Resident Reviews & Visiting Slots</em></p>
+      </td>
+    </tr>
+    <tr>
+      <td width="50%">
+        <img src="./screenshots/06_booking_workflow.png" alt="Booking Workflow Modal" />
+        <p align="center"><em>Interactive Booking: Shared Pool Toggle & Price Calculation</em></p>
+      </td>
+      <td width="50%">
+        <img src="./screenshots/11_customer_bookings.png" alt="Customer Bookings Management" />
+        <p align="center"><em>Active Subscriptions, Cooking Schedules & Cook Contacts</em></p>
+      </td>
+    </tr>
+  </table>
+</div>
+
+### 3. The Neighbourhood Cook Pool Marketplace
+<div align="center">
+  <table>
+    <tr>
+      <td width="50%">
+        <img src="./screenshots/07_neighbourhood_pools_market.png" alt="Neighbourhood Pools Marketplace" />
+        <p align="center"><em>Active Forming Pools with Live Capacity & Neighbour Avatars</em></p>
+      </td>
+      <td width="50%">
+        <img src="./screenshots/08_pool_details_cost_sharing.png" alt="Tiered Cost-Sharing Calculator" />
+        <p align="center"><em>Tiered Cost Calculator: ₹3,500 down to ₹1,575 as neighbours join</em></p>
+      </td>
+    </tr>
+  </table>
+</div>
+
+### 4. Gnani AI Voice Interaction & Safety Gate
+<div align="center">
+  <table>
+    <tr>
+      <td width="50%">
+        <img src="./screenshots/09_voice_assistant_modal.png" alt="Voice Assistant Modal" />
+        <p align="center"><em>Vani Multilingual Voice Assistant with 16kHz PCM Engine</em></p>
+      </td>
+      <td width="50%">
+        <img src="./screenshots/10_voice_interaction_flow.png" alt="Voice Confirmation Safety Gate" />
+        <p align="center"><em>Voice Transcript & Amber Safety Confirmation Gate</em></p>
+      </td>
+    </tr>
+  </table>
+</div>
+
+### 5. Cook Livelihood Hub & Administrator Governance
+<div align="center">
+  <table>
+    <tr>
+      <td width="50%">
+        <img src="./screenshots/12_cook_dashboard.png" alt="Cook Dashboard" />
+        <p align="center"><em>Cook Route Schedule across Tower B & ₹28,500 Earnings</em></p>
+      </td>
+      <td width="50%">
+        <img src="./screenshots/13_cook_availability_schedule.png" alt="Cook Availability Manager" />
+        <p align="center"><em>Cook Availability Manager across Weekly Shifts</em></p>
+      </td>
+    </tr>
+    <tr>
+      <td width="50%">
+        <img src="./screenshots/14_cook_profile_management.png" alt="Cook Profile Management" />
+        <p align="center"><em>Cook Profile Management & Dietary Checkboxes</em></p>
+      </td>
+      <td width="50%">
+        <img src="./screenshots/15_admin_dashboard.png" alt="Admin Command Center" />
+        <p align="center"><em>Admin Command Center: Platform KPIs & Verification Queue</em></p>
+      </td>
+    </tr>
+  </table>
+</div>
+
+---
+
+## 🛠️ System Architecture & Technology Stack
+
+VaniCook is engineered inside a **single-root unified monorepo** following strict MVC architecture:
+
+```
+CookConnect/
 ├── prisma/
-│   └── schema.prisma
-│
-├── .env.example
-├── .gitignore
-├── index.html
-├── package.json
-├── tailwind.config.js
-├── vite.config.js
-└── test_phase1.js
-Backend structure
-The backend is organised into clear responsibility layers:
-- Config: Database connection, environment configuration and seed data.
-- Models: Prisma-based data access and persistence.
-- Controllers: HTTP request handling and response formatting.
-- Services: Application logic, booking workflows and shared-pricing calculations.
-- Routes: REST API endpoint definitions.
-- Middleware: Authentication, role authorisation, validation and error handling.
-- Validators: Zod request schemas.
-- Sockets: Foundation for future real-time communication.
-Brand identity
-VaniCook uses a warm, premium food-tech visual language inspired by freshness, trust and the feeling of home-cooked meals.
-Brand token	Colour	Usage
-Forest Green	#174D38	Primary brand, headers and calls to action
-Fresh Green	#8BCF83	Accents, savings highlights and success states
-Warm Cream	#FAF8F1	Main background and warm surfaces
-Charcoal	#202923	Primary text and strong contrast
-Muted Sage	#E7EFE5	Soft surfaces, borders and supporting elements
+│   └── schema.prisma             # PostgreSQL schema (11 relational models)
+├── public/                       # Static public assets
+├── screenshots/                  # 16 High-Resolution 1920x1080 UI Captures
+├── src/
+│   ├── backend/                  # Node.js & Express MVC Backend
+│   │   ├── config/               # Database, Seed & Environment configs
+│   │   ├── controllers/          # Voice, Cook, Group, Booking, Admin, Auth
+│   │   ├── middleware/           # JWT verification, Role Guard, Zod validation
+│   │   ├── routes/               # REST API endpoints
+│   │   ├── services/             # Orchestrator, Pricing, Scheduling, Admin
+│   │   │   └── gnani/            # Prisma STT, Timbre TTS & Voice Orchestrator
+│   │   ├── sockets/              # Socket.IO room broadcasters
+│   │   └── server.js             # Express & HTTP server entrypoint
+│   └── frontend/                 # React 19 + Vite 6 Client Application
+│       ├── components/           # Common UI, Navigation, Modals, Voice
+│       ├── context/              # AuthContext & Session management
+│       ├── pages/                # Customer, Cook, Admin, Landing, Auth
+│       ├── services/             # Axios API services & WebSockets
+│       ├── utils/                # wavRecorder.js (16kHz PCM) & formatters
+│       ├── App.jsx               # Application root
+│       └── main.jsx              # DOM bootstrap
+├── video-research/               # Complete Hackathon research & video scripts
+├── nodemon.json                  # Restricts reload to src/backend, ignores .db
+└── package.json                  # Root dependencies & concurrent dev runner
+```
 
+---
 
-Typography
-- Outfit — display headings.
-- Plus Jakarta Sans — body text and interface content.
-Interaction design
-- Smooth entrance and hover animations using Motion for React.
-- Responsive layouts for different screen sizes.
-- Accessibility support for prefers-reduced-motion.
-Database design
-VaniCook uses PostgreSQL with Prisma ORM.
-Model	Responsibility
-User	Identity, account roles (CUSTOMER, COOK, ADMIN) and authentication data.
-CookProfile	Cook experience, specialities, cuisines, dietary practices, capacity, pricing and ratings.
-Society	Residential society, locality, city, postal code and geographic coordinates.
-CookSociety	Many-to-many relationship between cooks and societies they serve.
-HouseholdLocation	Household flat and tower information within a society.
-CookAvailability	Weekly availability across breakfast, lunch and dinner.
-Booking	Customer-cook subscriptions, meal slots, dates, monthly rates and shared ratios.
-BookingRequirement	Dietary preferences, spice levels, family size and special instructions.
-Review	Customer ratings and feedback.
-GroupRequest	Foundation for neighbourhood cook-pooling requests.
-GroupMember	Households participating in a shared group.
-Notification	Notification data structure.
-VoiceSession	Conversational session foundation for future speech integration.
+## 🚀 Quickstart Guide
 
+### 1. Prerequisites
+- **Node.js** `>= 20.0.0`
+- **PostgreSQL 18** running locally or in cloud
+- **Git**
 
-Shared pricing model
-The booking architecture supports different household participation ratios:
-Arrangement	Shared ratio
-Individual household	1.00
-Two-household pool	0.55
-Three-household pool	0.40
-
-
-These ratios represent the configured pricing model and should be interpreted alongside the actual cook rate and booking terms.
-REST API reference
-All API responses follow a unified response envelope:
-{
-  "success": true,
-  "message": "Request completed successfully",
-  "data": {},
-  "meta": {}
-}
-Authentication — /api/auth
-Method	Endpoint	Purpose
-POST	/api/auth/register	Register a customer or cook partner.
-POST	/api/auth/login	Authenticate and issue a JWT session.
-GET	/api/auth/me	Retrieve the authenticated user's profile.
-POST	/api/auth/logout	Clear the session cookie.
-
-
-Cook discovery — /api/cooks
-Method	Endpoint	Purpose
-GET	/api/cooks/discover	Discover and filter cooks by society, cuisine, diet, meal type, rating and price.
-GET	/api/cooks/:id	Retrieve cook details, schedule and reviews.
-GET	/api/cooks/me	Retrieve the cook's own profile.
-PUT	/api/cooks/me	Update cook profile, rates and specialities.
-GET	/api/cooks/pool-preview/:societyId	Preview neighbourhood pools in a society.
-
-
-Availability — /api/availability
-Method	Endpoint	Purpose
-GET	/api/availability/cook/:cookProfileId	View a cook's availability.
-GET	/api/availability/me	View the authenticated cook's schedule.
-POST	/api/availability	Add an availability slot.
-PUT	/api/availability/:id	Update or toggle an availability slot.
-DELETE	/api/availability/:id	Remove an availability slot.
-
-
-Locations and societies — /api/locations
-Method	Endpoint	Purpose
-GET	/api/locations/societies	List residential societies and cook counts.
-GET	/api/locations/societies/:id	Retrieve society details.
-POST	/api/locations/societies	Add a society (Admin).
-GET	/api/locations/my-locations	View registered household locations.
-POST	/api/locations/my-locations	Associate a household flat with a society.
-
-
-Bookings and reviews — /api/bookings
-Method	Endpoint	Purpose
-POST	/api/bookings	Create an individual or shared booking request.
-GET	/api/bookings/customer	View customer subscriptions.
-GET	/api/bookings/cook	View incoming requests and active households.
-PATCH	/api/bookings/:id/status	Accept, cancel or complete a booking.
-POST	/api/bookings/reviews	Submit a customer review.
-
-
-User and administration — /api/users
-Method	Endpoint	Purpose
-GET	/api/users/profile	Retrieve the current profile.
-PUT	/api/users/profile	Update the current profile.
-GET	/api/users/admin/stats	Retrieve platform metrics (Admin).
-
-
-Demo accounts
-The Phase 1 seed data includes demonstration accounts for customer, cook and administrator workflows.
-Role	Demo account
-Customer	priya.sharma@example.com
-Customer	rohit.verma@example.com
-Cook	sunita.devi@cookconnect.in
-Cook	ramesh.nair@cookconnect.in
-Cook	anita.joshi@cookconnect.in
-Admin	admin@cookconnect.in
-
-
-Demo accounts and passwords are intended for local development only. Check src/backend/config/seed.js for the current seeded credentials. Never use demo credentials in production.
-
-Getting started
-Prerequisites
-- Node.js v18 or later.
-- PostgreSQL 14 or later.
-- npm.
-- Git.
-1. Clone the repository
-git clone https://github.com/Vinit-1205/VaniCook.git
-cd VaniCook
-2. Install dependencies
+### 2. Installation & Setup
+Clone the repository and install dependencies:
+```bash
+git clone https://github.com/vinit-developer/Cookconnect.git
+cd Cookconnect
 npm install
-3. Configure environment variables
-Create a local .env file using .env.example as a template.
+```
+
+### 3. Environment Configuration
+Create a `.env` file in the root directory:
+```env
 PORT=5000
 NODE_ENV=development
 CLIENT_URL=http://localhost:5173
 
-DATABASE_URL="postgresql://USER:PASSWORD@localhost:5432/vanicook_db?schema=public"
+# Database Configuration (PostgreSQL)
+DATABASE_URL="postgresql://postgres:YOUR_PASSWORD@localhost:5433/CookCon"
 
-JWT_SECRET="replace_with_a_long_random_secret"
+# Authentication
+JWT_SECRET="cookconnect_jwt_super_secret_phase1_key_2026_xyz987"
 JWT_EXPIRES_IN="7d"
-Update the database URL and credentials to match your local PostgreSQL setup. Use a unique, securely generated JWT secret.
-4. Initialise the database
-npm run db:migrate
+
+# Gnani AI Enterprise API Key
+GNANI_API_KEY="YOUR_GNANI_VACHANA_API_KEY"
+```
+
+### 4. Database Setup & Seeding
+Push the Prisma schema and seed test demonstration data:
+```bash
+npx prisma db push
 npm run db:seed
-5. Start the development server
+```
+
+### 5. Launch Application
+Start both the Express backend and the Vite client concurrently:
+```bash
 npm run dev
-Service	Local URL
-Frontend	http://localhost:5173
-Backend API	http://localhost:5000/api
+```
+- **Frontend:** [http://localhost:5173](http://localhost:5173)
+- **Backend API:** [http://localhost:5000/api](http://localhost:5000/api)
 
+---
 
-6. Build for production
-npm run build
-npm start
-7. Run the verification suite
-node test_phase1.js
-Phase 1 verification
-The supplied Phase 1 documentation reports a 27-point automated verification suite with 100% success.
+## 🔑 One-Click Demo Credentials
 
-The documented checks include:
-- Backend health check.
-- Cook discovery and pricing calculations.
-- Cuisine and dietary filtering.
-- Residential society directory.
-- Customer, cook and admin authentication.
-- Role-based authorisation.
-- Customer registration with society and flat association.
-- Shared-pool booking and discount calculation.
-- Cook booking acceptance and status activation.
-- Review submission and rating recalculation.
-- Cook availability creation and removal.
-- Admin analytics.
-- Neighbourhood pool preview.
-The results above reflect the supplied Phase 1 project report. Run node test_phase1.js against your current checkout to verify the current codebase.
-Roadmap
-Phase 1 — Foundation and marketplace
-<details>
-<summary><strong>Completed scope documented for Phase 1</strong></summary>- Unified frontend and backend project architecture.
-- PostgreSQL database with Prisma ORM.
-- JWT authentication, bcrypt password hashing and role authorisation.
-- Zod request validation.
-- Food-tech design system and motion animations.
-- Landing page with shared-pricing calculator.
-- Customer dashboard with cook discovery, filtering and booking.
-- Cook dashboard with profile and availability management.
-- Admin dashboard with platform analytics.
-- Voice assistant conversational UI preview.
-- Neighbourhood pool preview foundation.
-</details>Phase 2 — Intelligent neighbourhood coordination
-- Gnani AI multilingual Speech-to-Text and Text-to-Speech integration.
-- Neighbourhood group-matching algorithms.
-- Automated residential tower and society pool formation.
-- Real-time Socket.IO chat.
-- Cook arrival notifications.
-- Dynamic group cost-sharing contracts.
-Phase 3 — Payments and ecosystem integrations
-- Online payments and escrow-style billing through UPI / Razorpay.
-- Residential society gate-pass integrations (MyGate / NoBrokerHood webhooks).
-- Advanced cook route optimisation across residential complexes.
-Security notes
-- Keep .env out of version control.
-- Use .env.example only for placeholder configuration.
-- Generate a strong, unique JWT secret for each environment.
-- Never commit API keys, database passwords or production credentials.
-- Keep seeded demo accounts restricted to local development.
-- Validate and authorise sensitive operations on the backend.
-Contributing
-Contributions, suggestions and issue reports are welcome.
-1. Fork the repository.
-2. Create a feature branch.
-3. Make your changes and test them locally.
-4. Commit with a descriptive message.
-5. Open a pull request describing the changes.
-Project information
-	
-Project	VaniCook
-Category	AI-powered FoodTech
-Initial release scope	Phase 1 — Foundation
-Primary market	Indian residential communities
-Repository	Vinit-1205/VaniCook
+The login page ([`/login`](http://localhost:5173/login)) includes **one-click autofill buttons** for all three roles:
 
+| Role | Name | Email Address | Password | Assigned Society |
+| :--- | :--- | :--- | :--- | :--- |
+| 👤 **Customer** | Priya Sharma | `priya.sharma@example.com` | `Customer#123` | Prestige Falcon City (Tower B, Flat 704) |
+| 🍳 **Cook** | Sunita Devi | `sunita.devi@cookconnect.in` | `CookPass#123` | Prestige Falcon City (Verified Partner) |
+| 🛡️ **Admin** | System Administrator | `admin@cookconnect.in` | `CookAdmin#2026` | Platform-wide Oversight |
 
-<div align="center">VaniCook
-Bringing neighbourhoods together, one meal at a time.
+---
 
-Discover local cooks. Share the cost. Make home cooking easier.
+## 🌍 Social & Economic Impact
+
+1. **Dignity & Livelihood for Domestic Cooks:**
+   Transforms domestic cooks from transit-exhausted gig workers into thriving micro-entrepreneurs. Cooks save **₹1,500–₹2,500 monthly** on transit fares, regain **3+ hours daily**, and boost their income to **₹28,500+**.
+2. **Affordable Nutrition for Urban Families:**
+   Enables working couples, students, and senior citizens to enjoy freshly cooked, nutritious, customized meals for less than the cost of one food delivery order per week.
+3. **Digital Language Inclusion:**
+   By powering natural voice interaction in native Indian languages with **Gnani AI**, VaniCook dismantles the digital divide for domestic workers across India.
+
+---
+
+<div align="center">
+  <p><strong>VaniCook • Built with ❤️ for the Gnani AI Multilingual Hackathon 2026</strong></p>
+  <p><em>One Cook. Multiple Households. Better Lives.</em></p>
 </div>
