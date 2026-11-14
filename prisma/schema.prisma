@@ -1,0 +1,305 @@
+// Prisma Schema for CookConnect — Phase 2: Group Cooking & Voice Intelligence
+// PostgreSQL with PostGIS-ready coordinate architecture
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  CUSTOMER
+  COOK
+  ADMIN
+}
+
+enum DayOfWeek {
+  MONDAY
+  TUESDAY
+  WEDNESDAY
+  THURSDAY
+  FRIDAY
+  SATURDAY
+  SUNDAY
+}
+
+enum MealType {
+  BREAKFAST
+  LUNCH
+  DINNER
+  ALL_MEALS
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  ACTIVE
+  COMPLETED
+  CANCELLED
+}
+
+enum GroupStatus {
+  OPEN
+  MATCHING
+  COOK_PENDING
+  CONFIRMED
+  ACTIVE
+  COMPLETED
+  CANCELLED
+}
+
+model User {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  passwordHash String
+  role         Role      @default(CUSTOMER)
+  fullName     String
+  phone        String?   @unique
+  avatarUrl    String?
+  isActive     Boolean   @default(true)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  cookProfile        CookProfile?
+  householdLocations HouseholdLocation[]
+  customerBookings   Booking[]           @relation("CustomerBookings")
+  reviewsGiven       Review[]            @relation("CustomerReviews")
+  notifications      Notification[]
+  voiceSessions      VoiceSession[]
+  groupRequests      GroupRequest[]      @relation("UserGroupRequests")
+  groupMemberships   GroupMember[]
+
+  @@index([email])
+  @@index([role])
+}
+
+model CookProfile {
+  id                 String    @id @default(cuid())
+  userId             String    @unique
+  user               User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  bio                String?
+  experienceYears    Int       @default(2)
+  specialities       String[]  @default([])
+  cuisines           String[]  @default([])
+  dietaryPreferences String[]  @default([])
+  maxHouseholds      Int       @default(4)
+  serviceRadiusKm    Float     @default(3.0)
+  basePriceMonthly   Float     @default(3500.0)
+  isVerified         Boolean   @default(true)
+  rating             Float     @default(4.8)
+  totalReviews       Int       @default(0)
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+
+  availabilities     CookAvailability[]
+  bookings           Booking[]
+  reviews            Review[]
+  societiesServed    CookSociety[]
+  assignedGroups     GroupRequest[]    @relation("CookAssignedGroups")
+
+  @@index([userId])
+  @@index([isVerified])
+  @@index([rating])
+}
+
+model Society {
+  id          String   @id @default(cuid())
+  name        String
+  locality    String
+  city        String
+  state       String   @default("Karnataka")
+  postalCode  String
+  latitude    Float?
+  longitude   Float?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  locations     HouseholdLocation[]
+  bookings      Booking[]
+  groupRequests GroupRequest[]
+  cooks         CookSociety[]
+
+  @@index([city, locality])
+  @@index([name])
+}
+
+model CookSociety {
+  id            String      @id @default(cuid())
+  cookProfileId String
+  cookProfile   CookProfile @relation(fields: [cookProfileId], references: [id], onDelete: Cascade)
+  societyId     String
+  society       Society     @relation(fields: [societyId], references: [id], onDelete: Cascade)
+  createdAt     DateTime    @default(now())
+
+  @@unique([cookProfileId, societyId])
+}
+
+model HouseholdLocation {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  societyId   String
+  society     Society  @relation(fields: [societyId], references: [id], onDelete: Cascade)
+  building    String?
+  flatNumber  String?
+  landmark    String?
+  isPrimary   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([userId])
+  @@index([societyId])
+}
+
+model CookAvailability {
+  id            String      @id @default(cuid())
+  cookProfileId String
+  cookProfile   CookProfile @relation(fields: [cookProfileId], references: [id], onDelete: Cascade)
+  dayOfWeek     DayOfWeek
+  mealType      MealType
+  startTime     String
+  endTime       String
+  isBooked      Boolean     @default(false)
+  maxSlots      Int         @default(3)
+  bookedSlots   Int         @default(0)
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  @@index([cookProfileId, dayOfWeek, mealType])
+}
+
+model Booking {
+  id            String        @id @default(cuid())
+  customerId    String
+  customer      User          @relation("CustomerBookings", fields: [customerId], references: [id], onDelete: Cascade)
+  cookProfileId String
+  cookProfile   CookProfile   @relation(fields: [cookProfileId], references: [id], onDelete: Cascade)
+  societyId     String?
+  society       Society?      @relation(fields: [societyId], references: [id], onDelete: SetNull)
+  groupRequestId String?
+  groupRequest   GroupRequest? @relation(fields: [groupRequestId], references: [id], onDelete: SetNull)
+  mealType      MealType      @default(ALL_MEALS)
+  status        BookingStatus @default(PENDING)
+  startDate     DateTime      @default(now())
+  endDate       DateTime?
+  monthlyRate   Float
+  sharedRatio   Float         @default(1.0)
+  notes         String?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  requirements  BookingRequirement?
+  review        Review?
+
+  @@index([customerId])
+  @@index([cookProfileId])
+  @@index([groupRequestId])
+  @@index([status])
+}
+
+model BookingRequirement {
+  id                  String   @id @default(cuid())
+  bookingId           String   @unique
+  booking             Booking  @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  diet                String   @default("Vegetarian")
+  spiceLevel          String   @default("Medium")
+  familySize          Int      @default(2)
+  specialInstructions String?
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+}
+
+model GroupRequest {
+  id                         String       @id @default(cuid())
+  societyId                  String
+  society                    Society      @relation(fields: [societyId], references: [id], onDelete: Cascade)
+  creatorId                  String
+  creator                    User         @relation("UserGroupRequests", fields: [creatorId], references: [id], onDelete: Cascade)
+  assignedCookId             String?
+  assignedCook               CookProfile? @relation("CookAssignedGroups", fields: [assignedCookId], references: [id], onDelete: SetNull)
+  mealType                   MealType     @default(LUNCH)
+  preferredSchedule          String       @default("11:30 AM - 01:30 PM")
+  daysOfWeek                 String[]     @default(["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"])
+  dietaryPreference          String       @default("Pure Vegetarian")
+  targetHouseholds           Int          @default(3)
+  currentHouseholds          Int          @default(1)
+  maxCapacity                Int          @default(4)
+  status                     GroupStatus  @default(OPEN)
+  estimatedPricePerHousehold Float        @default(1980.0)
+  totalWorkloadMinutes       Int          @default(90)
+  title                      String?
+  description                String?
+  expiresAt                  DateTime?
+  createdAt                  DateTime     @default(now())
+  updatedAt                  DateTime     @updatedAt
+
+  members                    GroupMember[]
+  bookings                   Booking[]
+
+  @@index([societyId, status])
+  @@index([assignedCookId])
+}
+
+model GroupMember {
+  id              String       @id @default(cuid())
+  groupRequestId  String
+  groupRequest    GroupRequest @relation(fields: [groupRequestId], references: [id], onDelete: Cascade)
+  userId          String
+  user            User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  householdSize   Int          @default(2)
+  flatNumber      String?      // Kept confidential from other group members
+  sharePercentage Float        @default(33.33)
+  status          String       @default("ACTIVE")
+  joinedAt        DateTime     @default(now())
+
+  @@unique([groupRequestId, userId])
+  @@index([groupRequestId])
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title     String
+  message   String
+  type      String   @default("SYSTEM")
+  isRead    Boolean  @default(false)
+  link      String?
+  createdAt DateTime @default(now())
+
+  @@index([userId, isRead])
+}
+
+model Review {
+  id            String      @id @default(cuid())
+  bookingId     String      @unique
+  booking       Booking     @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  customerId    String
+  customer      User        @relation("CustomerReviews", fields: [customerId], references: [id], onDelete: Cascade)
+  cookProfileId String
+  cookProfile   CookProfile @relation(fields: [cookProfileId], references: [id], onDelete: Cascade)
+  rating        Int         @default(5)
+  comment       String?
+  createdAt     DateTime    @default(now())
+
+  @@index([cookProfileId])
+}
+
+model VoiceSession {
+  id            String    @id @default(cuid())
+  userId        String
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  intent        String?
+  state         String?   @default("IDLE")
+  language      String    @default("hi-IN")
+  transcript    String?
+  pendingAction Json?
+  sessionData   Json?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@index([userId])
+}

@@ -1,0 +1,73 @@
+{
+  "config": {
+    "apiKeyConfigured": true,
+    "keyLength": 134,
+    "keyPrefix": "vach_...",
+    "timbreEndpoint": "https://api.vachana.ai/api/v1/tts/inference",
+    "prismaEndpoint": "https://api.vachana.ai/stt/v3",
+    "authHeader": "X-API-Key-ID"
+  },
+  "timbreTTS": {
+    "status": "SUCCESS",
+    "httpStatus": 200,
+    "model": "timbre-v2.5",
+    "language": "en-IN",
+    "voice": "Nalini",
+    "durationMs": 1174,
+    "contentType": "audio/wav",
+    "audioBytes": 161324,
+    "isRiffWave": true,
+    "sampleRate": 24000,
+    "channels": 1,
+    "bitsPerSample": 16,
+    "playable": true
+  },
+  "prismaSTT": {
+    "status": "SUCCESS",
+    "httpStatus": 200,
+    "model": "prisma-v3.0",
+    "languageCode": "en-IN",
+    "durationMs": 474,
+    "detectedFormat": "wav",
+    "detectedLanguage": "en-IN",
+    "transcript": "Welcome to Cook Connect, your neighborhood cooking assistant is ready!",
+    "rawResults": {
+      "success": true,
+      "request_id": "01a1d68a-8a36-736c-aead-0852543e0277",
+      "transcript": "Welcome to Cook Connect, your neighborhood cooking assistant is ready!",
+      "model": "prisma-v3.0",
+      "processing_time": 0.12085890769958496,
+      "end_to_end_latency": 0.12243795394897461,
+      "detected_language_code": "en-IN"
+    }
+  },
+  "audioFormatValidation": {
+    "webmDetection": {
+      "format": "webm",
+      "mimeType": "audio/webm",
+      "ext": "webm"
+    },
+    "webmRejectedCleanly": true,
+    "guardrailMessage": "Gnani Prisma STT requires wav, mp3, ogg, or flac. Browser WebM format is not accepted directly by the API. Use PCM WAV recording in the browser."
+  },
+  "voiceFlowE2E": {
+    "status": "SUCCESS",
+    "userId": "cmwfcn24p0006w9cg8bmiy7dm",
+    "inputQueryAudioBytes": 107564,
+    "sttTranscript": "Show me verified cooks in my society.",
+    "sttSource": "gnani_prisma_api",
+    "recognizedIntent": "FIND_COOKS",
+    "voiceState": "SPEAKING",
+    "responseText": "I found 3 verified cooks available in Prestige Shantiniketan. Sunita Devi is rated 4.9 stars for North Indian meals.",
+    "hasAudioResponse": true,
+    "responseAudioBytes": 353324,
+    "responseAudioIsWav": true,
+    "ttsSource": "gnani_timbre_api",
+    "totalFlowDurationMs": 1810
+  },
+  "securityAudit": {
+    "apiKeyLeakedInFrontend": false,
+    "leakedFiles": [],
+    "onlyBackendAccess": true
+  }
+}

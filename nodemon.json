@@ -1,0 +1,22 @@
+{
+  "watch": [
+    "src/backend"
+  ],
+  "ext": "js,mjs,json",
+  "ignore": [
+    ".db/**",
+    ".db",
+    "src/frontend/**",
+    "src/frontend",
+    "dist/**",
+    "dist",
+    "node_modules/**",
+    "node_modules",
+    "scratch/**",
+    "public/**",
+    "*.log",
+    ".git/**"
+  ],
+  "delay": 1000
+}
+

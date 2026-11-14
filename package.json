@@ -1,0 +1,50 @@
+{
+  "name": "cookconnect",
+  "version": "1.0.0",
+  "description": "CookConnect — AI-ready neighbourhood cook-sharing platform",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k -p \"[{name}]\" -n \"SERVER,CLIENT\" -c \"yellow.bold,cyan.bold\" \"npm run server\" \"npm run client\"",
+    "server": "nodemon src/backend/server.js",
+    "client": "vite",
+    "build": "vite build",
+    "start": "cross-env NODE_ENV=production node src/backend/server.js",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma db push",
+    "db:seed": "node src/backend/config/seed.js",
+    "db:studio": "prisma studio"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.4.1",
+    "axios": "^1.7.9",
+    "bcryptjs": "^3.0.2",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "framer-motion": "^12.4.7",
+    "helmet": "^8.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "lucide-react": "^0.475.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.2.0",
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.1.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "concurrently": "^9.1.2",
+    "cross-env": "^7.0.3",
+    "nodemon": "^3.1.9",
+    "postcss": "^8.5.3",
+    "prisma": "^6.4.1",
+    "puppeteer-core": "^25.17.0",
+    "tailwindcss": "^3.4.17",
+    "vite": "^6.2.0"
+  }
+}
